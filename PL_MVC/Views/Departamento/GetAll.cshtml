@@ -1,0 +1,169 @@
+﻿@model ML.Departamento
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+<h1 class="text-center">ECommerce - Departamento</h1>
+
+<br />
+<h2 class="text-center">Registrar</h2>
+<hr />
+<center>
+    <a class="btn btn-success" href="@Url.Action("Form", "Departamento")"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Registrar un nuevo departamento</a>
+</center>
+<br />
+
+<hr />
+<label>
+    <b>
+        Filtro
+    </b>
+</label>
+<br />
+<div class="row">
+    @using (Html.BeginForm("GetAll", "Departamento", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="row">
+            <div class="col">
+                <label for="Nombre">
+                    Buscar por id de area:
+                </label>
+                @Html.DropDownListFor(model => model.Area.IdArea, new SelectList(Model.Area.Areas, "IdArea", "Nombre"), "Selecciona un area...", new { @class = "form-control", @id = "Nombre" })
+            </div>
+
+            <div class="col">
+                <label for="ApellidoPaterno">
+                    Buscar por nombre de area:
+                </label>
+                @Html.TextBoxFor(model => model.Area.Nombre, new { @class = "form-control", @id = "ApellidoPaterno" })
+            </div>
+        </div>
+        <br />
+        <button class="btn btn-primary" type="submit"> Filtar </button>
+    }
+</div>
+<br />
+
+<h2 class="text-center">Departamentos</h2>
+<hr />
+@if (Model.Departamentos != null)
+{
+    <div class="container">
+        <table class="table table-hover" id="tabla">
+            <thead class="table-dark text-center">
+            <th>
+                Id departamento
+            </th>
+            <th>
+                Departamento
+            </th>
+            <th>
+                Id Area
+            </th>
+            <th>
+                Area
+            </th>
+            <th>
+                Actualizar
+            </th>
+            <th>
+                Eliminar
+            </th>
+            </thead>
+
+            <tbody class="text-center">
+                @foreach (ML.Departamento departamento in Model.Departamentos)
+                {
+                    <tr>
+                        <td class="table-secondary">
+                            @departamento.IdDepartamento
+                        </td>
+                        <td>
+                            @departamento.Nombre
+                        </td>
+                        <td class="table-secondary">
+                            @departamento.Area.IdArea
+                        </td>
+
+                        @if (departamento.Area.IdArea == 1)
+                        {
+                            <td>
+                                <i class="fa-solid fa-computer" style="color: #0080ff;"></i>
+                                @departamento.Area.Nombre
+                            </td>
+                        }
+                        else if (departamento.Area.IdArea == 2)
+                        {
+                            <td>
+                                <i class="fa-solid fa-blender-phone" style="color: #ff8040;"></i>
+                                @departamento.Area.Nombre
+                            </td>
+                        }
+                        else if (departamento.Area.IdArea == 3)
+                        {
+                            <td>
+                                <i class="fa-solid fa-headphones" style="color: #8080ff;"></i>
+                                @departamento.Area.Nombre
+                            </td>
+                        }
+                        else if (departamento.Area.IdArea == 4)
+                        {
+                            <td>
+                                <i class="fa-solid fa-gamepad" style="color: #ff0000;"></i>
+                                @departamento.Area.Nombre
+                            </td>
+                        }
+                        else if (departamento.Area.IdArea == 5)
+                        {
+                            <td>
+                                <i class="fa-solid fa-venus-mars" style="color: #ff8080;"></i>
+                                @departamento.Area.Nombre
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <i class="fa-solid fa-briefcase"></i>
+                                @departamento.Area.Nombre
+                            </td>
+                        }
+
+
+                        <td class="table-dark">
+                            <a class="btn btn-primary" href="@Url.Action("Form", "Departamento", new {idDepartamento = departamento.IdDepartamento})"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                        </td>
+                        <td class="table-dark">
+                            <a class="btn btn-danger" href="@Url.Action("Delete", "Departamento", new {idDepartamento = departamento.IdDepartamento})" onclick="return confirm('¿Estas seguro que quieres eliminar a este departamento?')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+}
+else
+{
+    <h2 class="text-center">No hay datos</h2>
+}
+
+
+
+@Scripts.Render("~/bundles/jquery")
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript">
+
+    let table = new DataTable('#tabla', {
+        reponsive: true,
+        "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "Todos"]],
+        searching: false,
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json",
+        }
+    });
+</script>

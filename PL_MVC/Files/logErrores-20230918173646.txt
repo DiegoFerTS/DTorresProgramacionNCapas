@@ -1,0 +1,5 @@
+Ha ocurrido un error al agregar al usuario con UserName: Rodrigo1
+El error es: 
+An error occurred while executing the command definition. See the inner exception for details.
+
+

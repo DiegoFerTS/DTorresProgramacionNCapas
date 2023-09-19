@@ -1,0 +1,52 @@
+﻿@model ML.Departamento
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <h2>Agregar departamento</h2>
+    <hr />
+
+    @using (Html.BeginForm("Form", "Departamento", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.IdDepartamento)
+
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    @Html.LabelFor(model => model.Nombre, new { @class = "hidden" })
+                </div>
+                <div class="row">
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @placeholder = "Ingresa el nombre del departamento", @style = "width: 99%" })
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row">
+                    @Html.LabelFor(model => model.Area, new { @class = "hidden" })
+                </div>
+                <div class="row">
+                    @Html.DropDownListFor(model => model.Area.IdArea, new SelectList(Model.Area.Areas, "IdArea", "Nombre"), "Selecciona un area...", new { @class = "form-select", @style = "width: 99%" })
+                </div>
+            </div>
+        </div><br />
+
+        if (Model.IdDepartamento == 0)
+        {
+            <center>
+                <button type="submit" class="btn btn-primary text-center">Registrar</button>
+            </center>
+        }
+        else
+        {
+            <center>
+                <button type="submit" class="btn btn-primary text-center">Actualizar</button>
+            </center>
+        }
+
+
+    }
+
+</div>

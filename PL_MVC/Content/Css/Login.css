@@ -1,0 +1,48 @@
+﻿body {
+    background-image: url('https://ennovasoft.com/assets/img/industries/ecommerce-03.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.contenedor__login .titulo{
+    color: white;
+}
+
+.contenedor__login {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 3px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.contenedor__input label{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.contenedir__input input{
+    width: 100%;
+}
+
+.contenedor__input input:hover {
+    border: 3px solid blue;
+    box-shadow: blue 10px 10px 5px;
+}
+
+.contenedor__input label:hover {
+    cursor: pointer;
+}
+
+.contenedor__login .contenedor__botones .btn{
+    margin-bottom: 10px;
+}
+
+.contenedor__login .contenedor__botones .mensaje:hover{
+    color: white;
+    cursor: pointer;
+}

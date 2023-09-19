@@ -1,0 +1,47 @@
+﻿@model ML.Producto
+@{
+    ViewBag.Title = "GetByIdArea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-center">@Model.Departamento.Area.Nombre</h2>
+<hr />
+
+
+@if (Model.Productos != null)
+{
+
+    <div class="row">
+        @foreach (ML.Producto producto in Model.Productos)
+        {
+            <div class="col-4" style="margin-bottom: 30px;">
+
+                <div class="card" style="width: 16rem;">
+                    <img src="data:image/*;base64,@producto.Imagen" class="card-img-top" alt="..." style="width: 100%; height: 50vh;">
+                    <hr />
+                    <div class="card-body">
+                        <h5 class="card-title">@producto.Nombre</h5>
+                        <p class="card-text">@producto.Descripcion</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Stock: @producto.Stock</li>
+                        <li class="list-group-item">
+                            Proveedor: @producto.Proveedor.Nombre <br />
+                            Contacto: @producto.Proveedor.Telefono
+                        </li>
+                        <li class="list-group-item">Area: @producto.Departamento.Area.Nombre</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+    
+}
+
+

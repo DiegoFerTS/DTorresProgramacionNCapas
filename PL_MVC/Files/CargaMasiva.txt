@@ -1,0 +1,7 @@
+UserName|Nombre|ApellidoPaterno|ApellidoMaterno|Email|Password|Sexo|Telefono|Celular|FechaNacimiento|CURP|IdRol|Status|Calle|NumeroInterior|NumeroExterior|IdColonia
+Mario1|Mario|Lopez|velazquez|Mario1@gmail.com|Mario_pass|H|5566778899|5611223344|2000/03/12|TOSJ010312HDFRRGJ9|1|1|Gregrio 1|10|11|1
+Alejandra1|Alejandra|Lopez|velazquez|Alejandra1@gmail.com|Alejandra_pass|M|5566778899|5611223344|2000/03/12|TOSJ010312HDFRRGJ9|2|1|Gregrio 2|12|13|2
+Mauricio2|Mauricio|Lopez|velazquez|Mauricio2@gmail.com|Mauricio_pass|H|5566778899|5611223344|2000/03/12|TOSJ010312HDFRRGJ9|3|0|Gregrio 3|14|15|3
+Marcela2|Marcela|Lopez|velazquez|Marcela2@gmail.com|Marcela_pass|M|5566778899|5611223344|2000/03/12|TOSJ010312HDFRRGJ9|4|0|Gregrio 4|16|17|4
+Josua3|Josua|Lopez|velazquez|Josua3@gmail.com|Josua_pass|H|5566778899|5611223344|2000/03/12|TOSJ010312HDFRRGJ9|5|1|Gregrio 5|18|19|5
+Yoana3|Yoana|Lopez|velazquez|Yoana3@gmail.com|Yoana_pass|M|5566778899|5611223344|2000/03/12|TOSJ010312HDFRRGJ9|6|1|Gregrio 6|20|21|6

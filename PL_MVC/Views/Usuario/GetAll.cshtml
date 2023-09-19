@@ -1,0 +1,230 @@
+﻿@model ML.Usuario
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model.Usuarios != null)
+{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+    <div style="display:inline-block;">
+        <h1 class="text-center">Usuarios registrados</h1>
+        <br />
+        <hr />
+        <a href="@Url.Action("Form", "Usuario")" class="btn btn-success"> Agregar nuevo usuario </a>
+        <br />
+
+        <hr />
+        <label>
+            <b>
+                Filtro
+            </b>
+        </label>
+        <br />
+        <div class="row">
+            @using (Html.BeginForm("GetAll", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                <div class="row">
+                    <div class="col">
+                        <label for="Nombre">
+                            Buscar por nombre:
+                        </label>
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "Nombre" })
+                    </div>
+
+                    <div class="col">
+                        <label for="ApellidoPaterno">
+                            Buscar por apellido paterno:
+                        </label>
+                        @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", @id = "ApellidoPaterno" })
+                    </div>
+                </div>
+                <br />
+                <button class="btn btn-primary" type="submit"> Filtar </button>
+            }
+        </div>
+        <br />
+
+        <div class="table-responsive" style="width: 190vh">
+            <table class="table table-hover text-center" id="tabla">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center">
+                            Foto
+                        </th>
+                        <th class="text-center">
+                            ID
+                        </th>
+                        <th class="text-center">
+                            Nombre
+                        </th>
+                        <th class="text-center">
+                            Sexo
+                        </th>
+                        <th class="text-center">
+                            Fecha de nacimiento
+                        </th>
+                        <th class="text-center">
+                            CURP
+                        </th>
+                        <th class="text-center">
+                            Rol
+                        </th>
+                        <th class="text-center">
+                            Contactos
+                        </th>
+                        <th class="text-center">
+                            Direccion
+                        </th>
+                        <th class="text-center">
+                            Estatus
+                        </th>
+                        <th class="text-center">
+                            Editar
+                        </th>
+                        <th class="text-center">
+                            Borrar
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ML.Usuario usuario in Model.Usuarios)
+                    {
+                        <tr>
+                            @if (usuario.Imagen == null || usuario.Imagen == "")
+                            {
+                                <td class="table-secondary">
+                                    <img id="Img" name="Img" src="https://static.thenounproject.com/png/5034901-200.png" width="100" height="100" style="border-radius: 5px;" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="table-secondary">
+                                    <img src="data:image/*;base64,@usuario.Imagen" width="100" height="100" style="border-radius: 5px;" />
+                                </td>
+                            }
+                            <td>
+                                @usuario.IdUsuario
+                            </td>
+                            <td class="table-secondary">
+                                @usuario.Nombre <br />
+                                @usuario.ApellidoPaterno <br />
+                                @usuario.ApellidoMaterno
+                            </td>
+                            <td>
+                                @usuario.Sexo
+                            </td>
+                            <td class="table-secondary">
+                                @usuario.FechaNacimiento.ToString("yyyy-MM-dd")
+                            </td>
+                            <td>
+                                @usuario.CURP
+                            </td>
+                            <td class="table-secondary">
+                                @usuario.Rol.Nombre
+                            </td>
+                            <td>
+                                Telefono: <br />
+                                @usuario.Telefono <br />
+                                Celular: <br />
+                                @usuario.Celular <br />
+                            </td>
+                            <td class="table-secondary">
+                                @usuario.Direccion.Colonia.Municipio.Estado.Pais.Nombre  <br />
+                                @usuario.Direccion.Colonia.Municipio.Estado.Nombre , <br />
+                                @usuario.Direccion.Colonia.Municipio.Nombre , <br />
+                                @usuario.Direccion.Colonia.Nombre
+                            </td>
+
+                            @if (usuario.Status)
+                            {
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked onchange="ChangeStatus(@usuario.IdUsuario, this)">
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onchange="ChangeStatus(@usuario.IdUsuario, this)">
+                                    </div>
+                                </td>
+                            }
+
+                            <td> <a class="btn btn-primary" href="@Url.Action("Form", "Usuario", new {IdUsuario = usuario.IdUsuario})"> <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i> </a> </td>
+                            <td> <a class="btn btn-danger" href="@Url.Action("Delete", "Usuario", new {IdUsuario = usuario.IdUsuario})" onclick="return confirm('¿Estas seguro que quieres eliminar a este usuario?')"> <i class="fa-solid fa-trash" style="color: #ffffff;"></i> </a> </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <hr /> <br />
+       
+        </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+    <script type="text/javascript">
+
+        let table = new DataTable('#tabla', {
+            reponsive: true,
+            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "Todos"]],
+            searching: false,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json",
+            }
+        });
+
+        function ChangeStatus(idUsuario, e) {
+            var status = e.checked;
+
+            $.ajax({
+                url: '@Url.Action("ChangeStatus")',
+                data: { IdUsuario: idUsuario, Status: status },
+                type: 'POST',
+                dataType: 'json',
+                success: {},
+                error: {
+                    //alert('Ocurrio un error')
+                }
+            });
+        }
+
+        function ValidarArchivoTxt() {
+            var extencionesPermitidas = ["txt"];
+
+            var file = document.getElementById("ArchivoTxt");
+
+            console.log(file.value);
+
+            var extencionArchivo = document.getElementById("ArchivoTxt").value.split(".").pop().toLowerCase();
+            var archivoValido = false;
+            for (var index in extencionesPermitidas) {
+                if (extencionArchivo === extencionesPermitidas[index]) {
+                    archivoValido = true;
+                    break;
+                }
+            }
+            if (!archivoValido) {
+                alert("Las extenciones validas de archivo son: *." + extencionesPermitidas.join(", *.") + ".");
+                $("#ArchivoTxt").val("");
+            }
+            return archivoValido;
+        }
+
+        
+    </script>
+}
+else
+{
+    <h1 class="text-center">No hay datos</h1>
+}
+

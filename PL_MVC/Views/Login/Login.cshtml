@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>ECommerce - Login</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Css/Login.css">
+    <link rel="shortcut icon" href="favicon" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="contenedor__login">
+        <center>
+            <h1 class="titulo">Login</h1>
+        </center>
+        <br />
+
+        <div class="contenedor__input">
+            <label for="username">Username</label>
+            <br />
+            <input type="text" class="form-control" id="username" />
+
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" />
+        </div>
+
+        <br />
+        <div class="contenedor__botones">
+            <center>
+                <button class="btn btn-primary boton" onclick="Login()">Iniciar sesion</button>
+                <br />
+                <a class="mensaje">¿Olvidaste tu contraseña?</a>
+            </center>
+        </div>
+    </div>
+</body>
+@Scripts.Render("~/bundles/jquery")
+
+
+</html>
+
+<script>
+    function Login() {
+        var userName = $("#username").val();
+        var passWord = $("#password").val();
+
+        $.ajax({
+            url: "@Url.Action("Login")",
+            method: "POST",
+            data: { username: userName, password: passWord },
+            dataType: "json",
+            success: function (e) {
+                if (e.Correct) {
+                    window.location.href = "@Url.Action("Index", "Home")";
+                    console.log(e);
+                } else {
+                    alert("El usuario no existe.");
+                    console.log(e);
+                }
+                
+                
+            }, error: {
+
+            }
+        })
+    }
+</script>

@@ -1,0 +1,147 @@
+﻿@model ML.Producto
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model.Productos != null)
+{
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+
+    <div style="display:inline-block;">
+        <h1 class="text-center">Usuarios registrados</h1>
+        <a href="@Url.Action("Form", "Producto")" class="btn btn-success"> Agregar nuevo producto </a>
+        <br /> <br />
+
+        <div class="table-responsive" style="width: 190vh">
+            <table class="table table-hover text-center" id="tabla">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center">
+                            Foto
+                        </th>
+                        <th class="text-center">
+                            ID
+                        </th>
+                        <th class="text-center">
+                            Producto
+                        </th>
+                        <th class="text-center">
+                            Precio Unitario.
+                        </th>
+                        <th class="text-center">
+                            Stock
+                        </th>
+                        <th class="text-center">
+                            Descripcion
+                        </th>
+                        <th class="text-center">
+                            Proveedor
+                        </th>
+                        <th class="text-center">
+                            Departamento
+                        </th>
+                        <th class="text-center">
+                            Area
+                        </th>
+                        <th class="text-center">
+                            Editar
+                        </th>
+                        <th class="text-center">
+                            Borrar
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ML.Producto producto in Model.Productos)
+                    {
+                        <tr>
+                            @if (producto.Imagen == null || producto.Imagen == "")
+                            {
+                                <td class="table-secondary">
+                                    <img id="Img" name="Img" src="https://boschbrandstore.com/wp-content/uploads/2019/01/no-image.png" width="100" height="100" style="border-radius: 5px;" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="table-secondary">
+                                    <img src="data:image/*;base64,@producto.Imagen" width="100" height="100" style="border-radius: 5px;" />
+                                </td>
+                            }
+
+                            <td style="text-align: center; vertical-align: middle;">
+                                @producto.IdProducto
+                            </td>
+                            <td class="table-secondary" style="text-align: center; vertical-align: middle;">
+                                @producto.Nombre <br />
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                @producto.PrecioUnitario
+                            </td>
+                            <td class="table-secondary" style="text-align: center; vertical-align: middle;">
+                                @producto.Stock
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                @producto.Descripcion
+                            </td>
+                            <td class="table-secondary" style="text-align: center; vertical-align: middle;">
+                                @producto.Proveedor.Nombre <br />
+                                Contacto: <br />
+                                @producto.Proveedor.Telefono
+                            </td>
+                            <td class="table-secondary" style="text-align: center; vertical-align: middle;">
+                                @producto.Departamento.Nombre
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                @producto.Departamento.Area.Nombre
+                            </td>
+
+
+                            <td style="text-align: center; vertical-align: middle;"> <a class="btn btn-primary"  href="@Url.Action("Form", "Producto", new {idProducto = producto.IdProducto})"> <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i> </a> </td>
+                            <td style="text-align: center; vertical-align: middle;"> <a class="btn btn-danger" href="@Url.Action("Delete", "Producto", new {idProducto = producto.IdProducto})" onclick="return confirm('¿Estas seguro que quieres eliminar a este usuario?')"> <i class="fa-solid fa-trash" style="color: #ffffff;"></i> </a> </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+    <script type="text/javascript">
+
+        let table = new DataTable('#tabla', {
+            reponsive: true,
+            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "Todos"]],
+            searching: false,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json",
+            }
+        });
+
+        function ChangeStatus(idUsuario, e) {
+            var status = e.checked;
+
+            $.ajax({
+                url: '@Url.Action("ChangeStatus")',
+                data: { IdUsuario: idUsuario, Status: status },
+                type: 'POST',
+                dataType: 'json',
+                success: {},
+                error: {
+                    //alert('Ocurrio un error')
+                }
+            });
+        }
+
+    </script>
+}
+else
+{
+    <h1 class="text-center">No hay datos</h1>
+}

@@ -1,0 +1,18 @@
+Ha ocurrido un error al agregar al usuario con UserName: Rodrigo1
+El error es: 
+An error occurred while executing the command definition. See the inner exception for details.
+Ha ocurrido un error al agregar al usuario con UserName: Rodrigo2
+El error es: 
+An error occurred while executing the command definition. See the inner exception for details.
+Ha ocurrido un error al agregar al usuario con UserName: Rodrigo3
+El error es: 
+An error occurred while executing the command definition. See the inner exception for details.
+Ha ocurrido un error al agregar al usuario con UserName: Rodrigo4
+El error es: 
+An error occurred while executing the command definition. See the inner exception for details.
+Ha ocurrido un error al agregar al usuario con UserName: Rodrigo5
+El error es: 
+An error occurred while executing the command definition. See the inner exception for details.
+Ha ocurrido un error al agregar al usuario con UserName: Rodrigo6
+El error es: 
+An error occurred while executing the command definition. See the inner exception for details.

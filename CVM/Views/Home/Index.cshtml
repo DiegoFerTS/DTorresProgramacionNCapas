@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!--
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+-->
+
+<head>
+    <link href="../wwwroot/css/bootstrap.css" rel="stylesheet" type="text/css" />
+</head>
+
+<div class="text-center">
+
+    <h3 class="text-center">Hola soy Diego Fernando Torres Soriano</h3>
+    <h4 class="text-center">Formulario</h4>
+    <br />
+    <div id="contenedorFormulario">
+        <div class="row">
+            <div class="col">
+                <label for="nombreUsuario">Ingresa tu nombre de usuario:</label>
+                <input type="text" class="form-control" placeholder="Nombre de usuario" id="nombreUsuario" />
+            </div>
+
+            <div class="col">
+                <label for="nombre">Ingresa tu nombre(s):</label>
+                <input type="text" class="form-control" placeholder="Nombre(s)" id="nombre" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col">
+                <label for="apellidoPaterno">Ingresa tu apellido paterno:</label>
+                <input type="text" class="form-control" placeholder="Apellido paterno" id="apellidoPaterno" />
+            </div>
+
+            <div class="col">
+                <label for="apellidoMaterno">Ingresa tu apellido materno:</label>
+                <input type="text" class="form-control" placeholder="Apellido materno" id="apellidoMaterno" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col">
+                <label for="email">Ingresa tu correo electronico:</label>
+                <input type="text" class="form-control" placeholder="Correo electronico" id="email" />
+            </div>
+
+            <div class="col">
+                <label for="password">Ingresa tu contraseña:</label>
+                <input type="password" class="form-control" placeholder="Contraseña" id="password" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col">
+                <label for="sexo">Selecciona tu sexo:</label>
+                <select class="form-select">
+                    <option value="0">Seleccionar...</option>
+                    <option value="M">Mujer</option>
+                    <option value="H">Hombre</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <label for="telefono">Ingresa tu numero de telefono fijo:</label>
+                <input type="tel" class="form-control" placeholder="Numero de telefono fijo" id="telefono" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col">
+                <label for="celular">Ingresa tu numero de celular:</label>
+                <input type="tel" class="form-control" placeholder="Numero de celular" id="celular" />
+            </div>
+
+            <div class="col">
+                <label for="fechaNacimiento">Ingresa tu fecha de nacimiento:</label>
+                <input type="date" class="form-control" placeholder="Fecha de nacimiento" id="fechaNacimiento" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col">
+                <label for="curp">Ingresa tu CURP:</label>
+                <input type="text" class="form-control" placeholder="CURP" id="curp" />
+            </div>
+
+            <div class="col">
+                <label for="idRol">Ingresa tu ID de rol:</label>
+                <input type="number" class="form-control" placeholder="ID rol" id="idRol" />
+            </div>
+        </div>
+
+    </div>
+    <br /><br />
+    <button class="btn btn-primary">Presionar para registrar</button>
+
+    <script src="../wwwroot/js/bootstrap.js"></script>
+</div>
+
