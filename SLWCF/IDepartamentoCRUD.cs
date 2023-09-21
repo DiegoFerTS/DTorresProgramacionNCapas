@@ -12,6 +12,18 @@ namespace SLWCF.Services
     public interface IDepartamentoCRUD
     {
         [OperationContract]
-        void DoWork();
+        SLWCF.Result Add(ML.Departamento departamento);
+
+        [OperationContract]
+        SLWCF.Result Update(ML.Departamento departamento);
+
+        [OperationContract]
+        SLWCF.Result Delete(int odDepartamento);
+
+        [OperationContract]
+        SLWCF.Result GetAll(ML.Departamento departamento);
+
+        [OperationContract]
+        SLWCF.Result GetById(int idDepartamento);
     }
 }
