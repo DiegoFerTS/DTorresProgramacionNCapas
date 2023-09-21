@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="68557d29-95f8-4f11-bb61-9e81a1d3b639" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:36627/DepartamentoCRUD.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DepartamentoCRUD.xsd" MetadataType="Schema" ID="f58cf011-d167-4fb7-abb8-f0958d92541c" SourceId="1" SourceUrl="http://localhost:36627/DepartamentoCRUD.svc?xsd=xsd3" />
+    <MetadataFile FileName="DepartamentoCRUD1.xsd" MetadataType="Schema" ID="a7877b7a-5791-408b-b9ee-014e5a630c23" SourceId="1" SourceUrl="http://localhost:36627/DepartamentoCRUD.svc?xsd=xsd0" />
+    <MetadataFile FileName="DepartamentoCRUD.wsdl" MetadataType="Wsdl" ID="f187a775-b711-4aa7-9c12-9a41ee4a6aac" SourceId="1" SourceUrl="http://localhost:36627/DepartamentoCRUD.svc?wsdl" />
+    <MetadataFile FileName="DepartamentoCRUD.disco" MetadataType="Disco" ID="4d22298f-c6c6-4028-bf74-537bb1dfb5ef" SourceId="1" SourceUrl="http://localhost:36627/DepartamentoCRUD.svc?disco" />
+    <MetadataFile FileName="DepartamentoCRUD2.xsd" MetadataType="Schema" ID="fc088bc6-aadd-4446-b6fd-89dd98393736" SourceId="1" SourceUrl="http://localhost:36627/DepartamentoCRUD.svc?xsd=xsd5" />
+    <MetadataFile FileName="DepartamentoCRUD3.xsd" MetadataType="Schema" ID="d067ef1b-8e32-4930-96a4-3f4d3358ac9c" SourceId="1" SourceUrl="http://localhost:36627/DepartamentoCRUD.svc?xsd=xsd4" />
+    <MetadataFile FileName="DepartamentoCRUD4.xsd" MetadataType="Schema" ID="1a5e1eb7-3589-4bdc-b94c-a7df7c85cc05" SourceId="1" SourceUrl="http://localhost:36627/DepartamentoCRUD.svc?xsd=xsd2" />
+    <MetadataFile FileName="DepartamentoCRUD5.xsd" MetadataType="Schema" ID="4245646f-1fc0-472b-9d07-9322bcfba073" SourceId="1" SourceUrl="http://localhost:36627/DepartamentoCRUD.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

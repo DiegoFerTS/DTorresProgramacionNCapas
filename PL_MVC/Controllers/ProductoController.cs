@@ -11,7 +11,15 @@ namespace PL_MVC.Controllers
         // GET: Producto
         public ActionResult GetAll()
         {
-            ML.Result resultado = BL.Producto.GetAll();
+            // Metodo getall normal
+            //ML.Result resultado = BL.Producto.GetAll();
+
+
+            // Metodo getall con servicio
+            ServiceReferenceProducto.ProductoServiceClient productoWCF = new ServiceReferenceProducto.ProductoServiceClient();
+
+            var resultado = productoWCF.GetAll();
+
             ML.Producto producto = new ML.Producto();
 
             if (resultado.Correct)
@@ -28,7 +36,14 @@ namespace PL_MVC.Controllers
         [HttpGet]
         public ActionResult Delete(int idProducto)
         {
-            ML.Result resultado = BL.Producto.Delete(idProducto);
+
+            // Metodo delete normal
+            //ML.Result resultado = BL.Producto.Delete(idProducto);
+
+            // Metodo delete con servicio
+            ServiceReferenceProducto.ProductoServiceClient productoWCF = new ServiceReferenceProducto.ProductoServiceClient();
+
+            var resultado = productoWCF.Delete(idProducto);
 
             if (resultado.Correct)
             {
@@ -54,7 +69,13 @@ namespace PL_MVC.Controllers
 
             if(idProducto != null) // Update
             {
-                ML.Result resultado = BL.Producto.GetById(idProducto.Value);
+                // Metodo getbyid normal
+                //ML.Result resultado = BL.Producto.GetById(idProducto.Value);
+
+                // Metodo getbyid con servicio
+                ServiceReferenceProducto.ProductoServiceClient productoWCF = new ServiceReferenceProducto.ProductoServiceClient();
+
+                var resultado = productoWCF.GetById(idProducto.Value);
 
                 if (resultado.Correct)
                 {
@@ -90,7 +111,14 @@ namespace PL_MVC.Controllers
 
                 if (producto.IdProducto == 0)  // Add
                 {
-                    ML.Result resultado = BL.Producto.Add(producto);
+
+                    // Metodo add normal
+                    //ML.Result resultado = BL.Producto.Add(producto);
+
+                    // Metodo add con servicio
+                    ServiceReferenceProducto.ProductoServiceClient productoWCF = new ServiceReferenceProducto.ProductoServiceClient();
+
+                    var resultado = productoWCF.Add(producto);
 
                     if (resultado.Correct)
                     {
@@ -100,7 +128,14 @@ namespace PL_MVC.Controllers
                     }
                 } else   // Update
                 {
-                    ML.Result resultado = BL.Producto.Update(producto);
+
+                    // Metodo update normal
+                    //ML.Result resultado = BL.Producto.Update(producto);
+
+                    // Metodo update con servicio
+                    ServiceReferenceProducto.ProductoServiceClient productoWCF = new ServiceReferenceProducto.ProductoServiceClient();
+
+                    var resultado = productoWCF.Update(producto);
 
                     if (resultado.Correct)
                     {
@@ -153,7 +188,13 @@ namespace PL_MVC.Controllers
 
                 producto.Departamento.Area.Nombre = "Productos del area de " + nombreArea;
 
-                ML.Result resultado = BL.Producto.GetByIdArea(idArea);
+                // Metodo getbyidarea normal
+                //ML.Result resultado = BL.Producto.GetByIdArea(idArea);
+
+                // Metodo getbyidarea con servicio
+                ServiceReferenceProducto.ProductoServiceClient productoWCF = new ServiceReferenceProducto.ProductoServiceClient();
+
+                var resultado = productoWCF.GetByIdArea(idArea);
 
                 if (resultado.Correct)
                 {

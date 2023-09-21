@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace PL_MVC.Controllers
 {
@@ -14,7 +15,14 @@ namespace PL_MVC.Controllers
             ML.Departamento departamento = new ML.Departamento();
             departamento.Area = new ML.Area();
 
-            ML.Result resultadoDepartamento = BL.Departamento.GetAll(departamento);
+            // Metodo getall normal
+            //ML.Result resultadoDepartamento = BL.Departamento.GetAll(departamento);
+
+            // Metodo getall con servicio
+            ServiceReferenceDepartamento.DepartamentoCRUDClient departamentoWCF = new ServiceReferenceDepartamento.DepartamentoCRUDClient();
+
+            var resultadoDepartamento = departamentoWCF.GetAll(departamento);
+
             ML.Result resultadoArea = BL.Area.GetAll("");
 
 
@@ -42,7 +50,14 @@ namespace PL_MVC.Controllers
                 departamentoConsultado.Area.Nombre = "";
             }
                     
-            ML.Result resultadoDepartamento = BL.Departamento.GetAll(departamentoConsultado);
+            // Metodo getall normal
+            // ML.Result resultadoDepartamento = BL.Departamento.GetAll(departamentoConsultado);
+
+            // Metodo getall con servicio
+            ServiceReferenceDepartamento.DepartamentoCRUDClient departamentoWCF = new ServiceReferenceDepartamento.DepartamentoCRUDClient();
+
+            var resultadoDepartamento = departamentoWCF.GetAll(departamentoConsultado);
+
             ML.Result resultadoArea = BL.Area.GetAll("");
 
             if (resultadoDepartamento.Correct)
@@ -69,7 +84,13 @@ namespace PL_MVC.Controllers
 
             if (idDepartamento != null)
             {
-                ML.Result resultado = BL.Departamento.GetById(idDepartamento.Value);
+                // Metodo getbyid normal
+                //ML.Result resultado = BL.Departamento.GetById(idDepartamento.Value);
+
+                // Metodo getbyid con servicio
+                ServiceReferenceDepartamento.DepartamentoCRUDClient departamentoWCF = new ServiceReferenceDepartamento.DepartamentoCRUDClient();
+
+                var resultado = departamentoWCF.GetById(idDepartamento.Value);
 
                 if (resultado.Correct)
                 {
@@ -89,7 +110,15 @@ namespace PL_MVC.Controllers
         {
             if (departamento.IdDepartamento == 0)
             {
+
+                /* Metodo add Normal
                 ML.Result resultado = BL.Departamento.Add(departamento);
+                */
+
+                //Metodo add con servicio
+                ServiceReferenceDepartamento.DepartamentoCRUDClient departamentoWCF = new ServiceReferenceDepartamento.DepartamentoCRUDClient();
+
+                var resultado = departamentoWCF.Add(departamento);
 
                 if (resultado.Correct)
                 {
@@ -100,7 +129,14 @@ namespace PL_MVC.Controllers
                 }
             } else
             {
+                /* Metodo update normal
                 ML.Result resultado = BL.Departamento.Update(departamento);
+                */
+
+                // Metodo update con servicio
+                ServiceReferenceDepartamento.DepartamentoCRUDClient departamentoWCF = new ServiceReferenceDepartamento.DepartamentoCRUDClient();
+
+                var resultado = departamentoWCF.Update(departamento);
 
                 if (resultado.Correct)
                 {
@@ -118,7 +154,13 @@ namespace PL_MVC.Controllers
         [HttpGet]
         public ActionResult Delete(int idDepartamento)
         {
-            ML.Result resultado = BL.Departamento.Delete(idDepartamento);
+            // Metodo delete normal
+            //ML.Result resultado = BL.Departamento.Delete(idDepartamento);
+
+            // Metodo delete con servicio
+            ServiceReferenceDepartamento.DepartamentoCRUDClient departamentoWCF = new ServiceReferenceDepartamento.DepartamentoCRUDClient();
+
+            var resultado = departamentoWCF.Delete(idDepartamento);
 
             if (resultado.Correct)
             {
