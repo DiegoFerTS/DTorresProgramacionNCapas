@@ -101,7 +101,6 @@ namespace PL_MVC.Controllers
             {
                 departamento.Area.Areas = resultadoAreas.Objects;
             }
-
             return View(departamento);
         }
 
@@ -110,7 +109,6 @@ namespace PL_MVC.Controllers
         {
             if (departamento.IdDepartamento == 0)
             {
-
                 /* Metodo add Normal
                 ML.Result resultado = BL.Departamento.Add(departamento);
                 */
